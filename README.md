@@ -47,8 +47,8 @@ Ensure the following components are installed and properly configured:
    [Service]
    Type=oneshot
    ExecStart=/usr/local/bin/paperless_sync.sh
-   User=paperless
-   Group=paperless
+   User=root
+   Group=root
    Nice=10
    ProtectSystem=full
    PrivateTmp=true

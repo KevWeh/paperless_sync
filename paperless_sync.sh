@@ -16,7 +16,13 @@ PAPERLESS_ARCHIVE_MOUNT="/mnt/archive"
 SERVICE_NAME="paperless_web"
 LOG_DIR="/var/log/paperless"
 mkdir -p "$LOG_DIR"
-LOG_FILE="$LOG_DIR/sync.log"
+
+
+# ---- Create new log file per day ----
+LOG_FILE="$LOG_DIR/$(date +%Y-%m-%d)-sync.log"
+
+# ---- Delete log files older than 7 days ----
+find "$LOG_DIR" -name "*-sync.log" -type f -mtime +7 -delete
 
 # ---- Logging functions ----
 timestamp() {
